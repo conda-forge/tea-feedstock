@@ -1,5 +1,5 @@
 context:
-  version: "0.12.0"
+  version: "0.13.0"
 
 package:
   name: tea
@@ -7,8 +7,12 @@ package:
 
 source:
   - url: https://gitea.com/gitea/tea/archive/v${{ version }}.tar.gz
-    sha256: db2f442c3ff8038f41a1745e70f9f17257368e9c6dd7b6706dd096778b06dee5
+    sha256: c08f1ffd1318461a80bdee800a35515b07f0d305333af4e06e66b3a518d54f46
     target_directory: src
+  - url: https://github.com/go-authgate/authgate/raw/main/LICENSE
+    sha256: 16d8778aef2c07d03e50c7933b3ce7af60652d59ba5a30a4f978b6cabe8dcf60
+    target_directory: go-authgate-sdk-go-license
+    file_name: LICENSE
   - if: win
     then:
       url: https://github.com/mattn/go-localereader/raw/master/LICENSE
@@ -20,7 +24,7 @@ build:
   number: 0
   script:
     - cd src
-    - go-licenses save . --save_path ../library_licenses ${{ "--ignore github.com/mattn/go-localereader" if win }}
+    - go-licenses save . --save_path ../library_licenses --ignore github.com/go-authgate/sdk-go/credstore ${{ "--ignore github.com/mattn/go-localereader" if win }}
     - if: win
       then:
         - mkdir ..\library_licenses\github.com\mattn\go-localereader
@@ -52,6 +56,7 @@ about:
   license_file:
     - src/LICENSE
     - library_licenses/
+    - go-authgate-sdk-go-license/LICENSE
   documentation: https://gitea.com/gitea/tea
   repository: https://gitea.com/gitea/tea
 
