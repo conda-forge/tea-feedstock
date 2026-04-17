@@ -1,5 +1,5 @@
 context:
-  version: "0.13.0"
+  version: "0.14.0"
 
 package:
   name: tea
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://gitea.com/gitea/tea/archive/v${{ version }}.tar.gz
-    sha256: c08f1ffd1318461a80bdee800a35515b07f0d305333af4e06e66b3a518d54f46
+    sha256: f509de217ac0e57491ffdab2750516e8c505780881529ee703b9d0c86cc652a3
     target_directory: src
   - url: https://github.com/go-authgate/authgate/raw/main/LICENSE
     sha256: 16d8778aef2c07d03e50c7933b3ce7af60652d59ba5a30a4f978b6cabe8dcf60
