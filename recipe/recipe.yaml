@@ -24,7 +24,7 @@ build:
   number: 0
   script:
     - cd src
-    - go-licenses save . --save_path ../library_licenses --ignore github.com/alecthomas/chroma ${{ "--ignore github.com/mattn/go-localereader" if win }}
+    - go-licenses save . --save_path ../library_licenses --ignore github.com/go-authgate/sdk-go --ignore github.com/alecthomas/chroma ${{ "--ignore github.com/mattn/go-localereader" if win }}
     - if: win
       then:
         - mkdir ..\library_licenses\github.com\mattn\go-localereader
