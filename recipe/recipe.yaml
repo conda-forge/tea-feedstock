@@ -1,5 +1,5 @@
 context:
-  version: "0.14.1"
+  version: "0.14.2"
 
 package:
   name: tea
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://gitea.com/gitea/tea/archive/v${{ version }}.tar.gz
-    sha256: 848b6b2fafa270fa77b4e278d521bfcc16d2f721c45ac90f08f5b16dc630c3f9
+    sha256: c7bccdb873328e6a03fe3320ea9958d33388fa01a420343169eb7e0205977135
     target_directory: src
   - url: https://raw.githubusercontent.com/alecthomas/chroma/refs/heads/master/COPYING
     sha256: 13654b052f885cb3fa47d7343e13975d9c8a64c3bcd84993c35d5eb01f22b23f
