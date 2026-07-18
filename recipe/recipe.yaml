@@ -56,7 +56,7 @@ about:
   license_file:
     - src/LICENSE
     - library_licenses/
-    - go-authgate-sdk-go-license/LICENSE
+    - LICENSE-go-authgate
     - alecthomas-chroma/COPYING
   documentation: https://gitea.com/gitea/tea
   repository: https://gitea.com/gitea/tea
