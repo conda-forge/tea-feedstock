@@ -1,5 +1,5 @@
 context:
-  version: "0.14.2"
+  version: "0.15.0"
 
 package:
   name: tea
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://gitea.com/gitea/tea/archive/v${{ version }}.tar.gz
-    sha256: c7bccdb873328e6a03fe3320ea9958d33388fa01a420343169eb7e0205977135
+    sha256: ca8a6b39116617dac2bb46b53cd4021daea6a7ae6a8106fa6ef359c76b54118a
     target_directory: src
   - url: https://raw.githubusercontent.com/alecthomas/chroma/refs/heads/master/COPYING
     sha256: 13654b052f885cb3fa47d7343e13975d9c8a64c3bcd84993c35d5eb01f22b23f
@@ -21,7 +21,7 @@ source:
       file_name: LICENSE
 
 build:
-  number: 1
+  number: 0
   script:
     - cd src
     - go-licenses save . --save_path ../library_licenses --ignore github.com/go-authgate/sdk-go --ignore github.com/alecthomas/chroma ${{ "--ignore github.com/mattn/go-localereader" if win }}
@@ -30,15 +30,13 @@ build:
         - mkdir ..\library_licenses\github.com\mattn\go-localereader
         - copy ..\go-localereader-license\LICENSE ..\library_licenses\github.com\mattn\go-localereader\LICENSE
     - if: unix
-      then: go build -v -o $PREFIX/bin/tea -ldflags="-s -w"
-      else: go build -v -o %LIBRARY_BIN%\tea.exe -ldflags="-s"
-    - if: unix
       then:
+        - go build -v -o $PREFIX/bin/tea -ldflags="-s -w"
         - mkdir -p $PREFIX/share/zsh/site-functions $PREFIX/share/bash-completion/completions $PREFIX/share/fish/vendor_completions.d
         - $PREFIX/bin/tea completion zsh > $PREFIX/share/zsh/site-functions/_tea
         - $PREFIX/bin/tea completion bash > $PREFIX/share/bash-completion/completions/tea
         - $PREFIX/bin/tea completion fish > $PREFIX/share/fish/vendor_completions.d/tea.fish
-
+      else: go build -v -o %LIBRARY_BIN%\tea.exe -ldflags="-s"
 requirements:
   build:
     - ${{ compiler("go-nocgo") }}
